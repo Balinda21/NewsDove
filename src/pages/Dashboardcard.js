@@ -1,11 +1,8 @@
+import { toast } from "react-toastify";
 import React, { useState } from "react";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-function notification() {
-  const notify = () => toast("Wow so easy!");
-}
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 const Dashboardcard = ({ id, postImage, title, content, subheader }) => {
   const [isEditing, setEditing] = useState(false);
@@ -55,7 +52,18 @@ const Dashboardcard = ({ id, postImage, title, content, subheader }) => {
       })
       .then((response) => {
         if (response.status === 200) {
-          alert("Data updated successfully");
+          toast.success("Data deleted successfully", {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+          // alert("Data updated successfully");
+          window.location.reload();
           setEditing(false);
         } else {
           alert("Failed to update data");
@@ -86,14 +94,27 @@ const Dashboardcard = ({ id, postImage, title, content, subheader }) => {
       })
       .then((response) => {
         if (response.status === 200) {
-          alert("Data deleted successfully");
+          toast.success("Updated", {
+            position: "top-right",
+            autoClose: 500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
+          window.location.reload();
         } else {
           alert("Failed to delete data");
+
+          window.location.reload();
         }
       })
       .catch((error) => {
         console.error("Error deleting data:", error);
         alert("Failed to delete data");
+        window.location.reload();
       });
   }
 
@@ -150,6 +171,7 @@ const Dashboardcard = ({ id, postImage, title, content, subheader }) => {
           Delete
         </li>
       </div>
+      <ToastContainer />
     </div>
   );
 };

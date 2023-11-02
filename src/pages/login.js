@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Adminx from "./Admin";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 export default function Login() {
   const navigate = useNavigate(); // Initialize navigate
@@ -24,18 +27,16 @@ export default function Login() {
         password: password,
       })
       .then((response) => {
-        // const { role } = response.data?.users;
-        // console.log("role", response.data?.users.role);
-
-        // if (role === "admin") {
-        //   alert("Admin logged in");
-        //   navigate("/Admin");
-        // } else {
-        //   alert("User Logged in");
-        //   navigate("/");
-        // }
-
-        alert("success logged in");
+        toast.success("Welcome back Admin", {
+          position: "top-left",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        });
         localStorage.setItem("token", response.data.token);
         navigate("/admin"); // Use navigate to redirect after successful login
       })
