@@ -27,7 +27,7 @@ function App() {
         <Route path="/Admin" element={<Adminx />} />
         <Route path="/charts" element={<Graph />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }
