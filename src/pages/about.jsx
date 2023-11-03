@@ -11,7 +11,7 @@ const About = () => {
           <div className="text">
             <h2>About Us</h2>
             <p>
-              Step into a realm where words breathe life, unveiling captivating
+              Step into a realm where words breathe life unveiling captivating
               narratives and insightful journalism. Our publication, a beacon of
               truth and creativity, illuminates the extraordinary within the
               ordinary. With a sharp eye for detail and a passion for
